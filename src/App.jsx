@@ -204,7 +204,7 @@ function App() {
                 marginTop: '60px',
                 opacity: 0.8
               }}>
-                Made with love by <a href="#" style={{ color: '#9E896A', textDecoration: 'underline', fontWeight: 'bold' }}>The Digital Yes</a>
+                Made with love by <a href="#" style={{ color: '#9E896A', textDecoration: 'underline', fontWeight: 'bold' }}>Lotus Loop Media Solutions</a>
               </p>
             </div>
           </div>
