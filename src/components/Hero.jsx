@@ -1,6 +1,6 @@
 import React from 'react';
 import heroVideo from '../assets/hero-video-ref.mp4';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const Hero = () => {
     return (
@@ -25,7 +25,7 @@ const Hero = () => {
                 </video>
             </div>
 
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -82,9 +82,9 @@ const Hero = () => {
                 }}>
                     19 April 2026
                 </p>
-            </motion.div>
+            </Motion.div>
 
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 1 }}
@@ -118,7 +118,7 @@ const Hero = () => {
                 }}>
                     ⌄
                 </div>
-            </motion.div>
+            </Motion.div>
 
             <style>
                 {`

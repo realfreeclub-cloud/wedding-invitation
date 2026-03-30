@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from "motion/react";
+import { motion as Motion, AnimatePresence } from "motion/react";
 import { Mail } from "lucide-react";
 import './Envelope.css';
 import weddingLogo from '../assets/wedding_logo.png';
@@ -22,7 +22,7 @@ export default function Envelope({ onOpen }) {
     return (
         <AnimatePresence>
             {!isExiting && (
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
                     transition={{ duration: 1, ease: "easeInOut" }}
@@ -38,7 +38,7 @@ export default function Envelope({ onOpen }) {
                         <div className="relative w-full aspect-[4/3] [perspective:1000px]">
 
                             {/* Invitation Card (Slides Up) */}
-                            <motion.div
+                            <Motion.div
                                 initial={{ y: 0, opacity: 0 }}
                                 animate={isOpen ? { y: -250, opacity: 1 } : { y: 0, opacity: 0 }}
                                 transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
@@ -62,7 +62,7 @@ export default function Envelope({ onOpen }) {
                                         month: 'long', day: 'numeric', year: 'numeric'
                                     })}
                                 </p>
-                            </motion.div>
+                            </Motion.div>
 
                             {/* Envelope Back/Body */}
                             <div className="absolute inset-0 bg-[#f4f1e0] shadow-2xl rounded-lg overflow-hidden border border-stone-200 z-[5]">
@@ -71,7 +71,7 @@ export default function Envelope({ onOpen }) {
 
                                 {/* Decorative Seal (Visible when closed) */}
                                 {!isOpen && (
-                                    <motion.div
+                                    <Motion.div
                                         initial={{ scale: 1 }}
                                         animate={{ scale: [1, 1.05, 1] }}
                                         transition={{ repeat: Infinity, duration: 3 }}
@@ -80,12 +80,12 @@ export default function Envelope({ onOpen }) {
                                         <div className="w-16 h-16 bg-gold rounded-full shadow-lg flex items-center justify-center border-4 border-white/20">
                                             <Mail className="text-white w-8 h-8" />
                                         </div>
-                                    </motion.div>
+                                    </Motion.div>
                                 )}
                             </div>
 
                             {/* Envelope Flap (Top) */}
-                            <motion.div
+                            <Motion.div
                                 className="absolute top-0 left-0 w-full h-1/2 bg-[#ece8d0] origin-top z-30 rounded-t-lg border-b border-stone-300/50"
                                 style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}
                                 animate={isOpen ? { rotateX: -180, zIndex: 0 } : { rotateX: 0 }}
@@ -102,7 +102,7 @@ export default function Envelope({ onOpen }) {
 
                         {/* Open Button */}
                         {!isOpen && (
-                            <motion.button
+                            <Motion.button
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
@@ -110,22 +110,22 @@ export default function Envelope({ onOpen }) {
                                 className="mt-12 px-10 py-4 bg-gold text-white rounded-full font-bold uppercase tracking-[0.3em] text-sm shadow-xl hover:bg-gold/90 hover:scale-105 transition-all active:scale-95 cursor-pointer"
                             >
                                 Open Invitation
-                            </motion.button>
+                            </Motion.button>
                         )}
 
                         {/* Footer Text */}
                         {!isOpen && (
-                            <motion.p
+                            <Motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 0.4 }}
                                 transition={{ delay: 1 }}
                                 className="mt-6 text-stone-600 text-[10px] uppercase tracking-widest"
                             >
                                 A special delivery for you
-                            </motion.p>
+                            </Motion.p>
                         )}
                     </div>
-                </motion.div>
+                </Motion.div>
             )}
         </AnimatePresence>
     );
