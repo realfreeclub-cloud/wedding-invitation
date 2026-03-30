@@ -18,76 +18,38 @@ const ImageSlider = () => {
     }, [images.length]);
 
     return (
-        <section className="section reveal" style={{ padding: '0 20px 120px 20px', textAlign: 'center' }}>
-            <h2 style={{
-                fontSize: '3.5rem',
-                marginBottom: '60px',
-                color: 'var(--primary)',
-                fontFamily: 'var(--font-display)'
-            }}>
+        <section className="slider-section reveal">
+            <h2 className="slider-title">
                 Capturing Our Love
             </h2>
-            <div className="reveal" style={{
-                width: '100%',
-                maxWidth: '1000px',
-                margin: '0 auto',
-                height: '700px',
-                position: 'relative',
-                borderRadius: '40px',
-                overflow: 'hidden',
-                boxShadow: '0 40px 100px rgba(0,0,0,0.15)',
-                border: '15px solid white'
-            }}>
+            <div className="slider-container reveal">
                 {images.map((img, index) => (
                     <div
                         key={index}
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            backgroundImage: `url(${img})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            opacity: index === currentIndex ? 1 : 0,
-                            transform: index === currentIndex ? 'scale(1.05)' : 'scale(1)',
-                            transition: 'opacity 1.5s ease-in-out, transform 8s ease-out'
-                        }}
+                        className={`slider-slide ${index === currentIndex ? 'active' : ''}`}
                     >
-                        <div style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '30%',
-                            background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
-                            zIndex: 1
-                        }}></div>
+                        {/* Soft blurred background for premium feel */}
+                        <div 
+                            className="slide-bg-blur"
+                            style={{ backgroundImage: `url(${img})` }}
+                        />
+                        
+                        {/* Main Image - NOT CROPPED */}
+                        <div 
+                            className="slide-img-main"
+                            style={{ backgroundImage: `url(${img})` }}
+                        />
+                        
+                        <div className="slide-overlay"></div>
                     </div>
                 ))}
 
-                <div style={{
-                    position: 'absolute',
-                    bottom: '40px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    gap: '15px',
-                    zIndex: 2
-                }}>
+                <div className="slider-dots">
                     {images.map((_, index) => (
                         <div
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            style={{
-                                width: index === currentIndex ? '30px' : '10px',
-                                height: '10px',
-                                borderRadius: '10px',
-                                backgroundColor: index === currentIndex ? '#fff' : 'rgba(255,255,255,0.5)',
-                                transition: 'all 0.5s ease',
-                                cursor: 'pointer'
-                            }}
+                            className={`slider-dot ${index === currentIndex ? 'active' : ''}`}
                         />
                     ))}
                 </div>
