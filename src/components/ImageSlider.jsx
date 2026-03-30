@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import img1 from '../assets/gallery-1.jpg';
 import img2 from '../assets/gallery-2.jpg';
 import img3 from '../assets/gallery-3.jpg';
+import img4 from '../assets/gallery-4.jpg';
 
 const ImageSlider = () => {
-    const images = [img1, img2, img3];
+    const images = [img1, img2, img3, img4];
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -15,10 +16,18 @@ const ImageSlider = () => {
     }, [images.length]);
 
     return (
-        <section className="section reveal" style={{ padding: '0 20px 120px 20px' }}>
+        <section className="section reveal" style={{ padding: '0 20px 120px 20px', textAlign: 'center' }}>
+            <h2 style={{
+                fontSize: '3.5rem',
+                marginBottom: '60px',
+                color: 'var(--primary)',
+                fontFamily: 'var(--font-display)'
+            }}>
+                Capturing Our Love
+            </h2>
             <div className="reveal" style={{
                 width: '100%',
-                maxWidth: '1200px',
+                maxWidth: '1000px',
                 margin: '0 auto',
                 height: '700px',
                 position: 'relative',

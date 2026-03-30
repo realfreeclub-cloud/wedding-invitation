@@ -16,13 +16,26 @@ import paperTexture from './assets/paper-texture.png';
 import weddingLogo from './assets/wedding_logo.png';
 import weddingMusic from './assets/wedding-music.mp3';
 
+// Generated once at module level — no impure calls during render
+const PETALS = [...Array(15)].map((_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  delay: `${Math.random() * 10}s`,
+  scale: 0.5 + Math.random()
+}));
+
+// Create audio instance once at module level and configure it here
+const weddingAudio = new Audio(weddingMusic);
+weddingAudio.loop = false;
+
 function App() {
   const [showInvitation, setShowInvitation] = useState(() => {
     // Check if user has already opened the invitation before
     return localStorage.getItem('invitation_opened') === 'true';
   });
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio] = useState(new Audio(weddingMusic));
+  const audio = weddingAudio;
+  const petals = PETALS;
 
   useEffect(() => {
     if (showInvitation) {
@@ -41,7 +54,6 @@ function App() {
   }, [showInvitation]);
 
   useEffect(() => {
-    audio.loop = false; // Changed to false to play through only once per visit
     return () => {
       audio.pause();
     };
@@ -76,14 +88,14 @@ function App() {
       </div>
 
       <div className="petals-container" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}>
-        {[...Array(15)].map((_, i) => (
+        {petals.map((petal) => (
           <div
-            key={i}
+            key={petal.id}
             className="floating-petal"
             style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              transform: `scale(${0.5 + Math.random()})`
+              left: petal.left,
+              animationDelay: petal.delay,
+              transform: `scale(${petal.scale})`
             }}
           />
         ))}
@@ -117,6 +129,7 @@ function App() {
         <Hero />
         <Countdown />
         <Welcome />
+        <ImageSlider />
         <InvitationDetail />
 
         {/* Decorative Flower PNG spacer */}

@@ -1,14 +1,14 @@
-import { motion } from 'motion/react';
-import { useLanguage } from '../context/LanguageContext';
-import img1 from '../assets/gallery-1.jpg';
+import { motion as Motion } from 'motion/react';
+import { useLanguage } from '../hooks/useLanguage';
 import img2 from '../assets/gallery-2.jpg';
 import img3 from '../assets/gallery-3.jpg';
+import img4 from '../assets/gallery-4.jpg';
 import weddingLogo from '../assets/wedding_logo.png';
 
 const Welcome = () => {
     const { t } = useLanguage();
     // Doubling images for seamless infinite loop
-    const galleryImages = [img1, img2, img3, img1, img2, img3, img1, img2, img3, img1, img2, img3];
+    const galleryImages = [img2, img3, img4, img2, img3, img4, img2, img3, img4, img2, img3, img4];
 
     return (
         <section className="section" style={{ backgroundColor: '#fff', padding: '100px 0', overflow: 'hidden' }}>
@@ -49,7 +49,7 @@ const Welcome = () => {
 
                 {/* Infinite Horizontal Slider */}
                 <div className="reveal" style={{ width: '100%', position: 'relative' }}>
-                    <motion.div
+                    <Motion.div
                         style={{
                             display: 'flex',
                             gap: '20px',
@@ -88,7 +88,7 @@ const Welcome = () => {
                                 />
                             </div>
                         ))}
-                    </motion.div>
+                    </Motion.div>
                 </div>
             </div>
         </section>

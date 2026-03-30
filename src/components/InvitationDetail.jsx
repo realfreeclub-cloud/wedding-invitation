@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import floral from '../assets/floral.png';
 
 const InvitationDetail = () => {
     return (

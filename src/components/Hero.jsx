@@ -1,5 +1,4 @@
 import React from 'react';
-import rings from '../assets/rings.png';
 import heroVideo from '../assets/hero-video-ref.mp4';
 import { motion } from 'motion/react';
 

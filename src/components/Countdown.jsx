@@ -1,5 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+
+const TimeBlock = ({ value, label }) => (
+    <div style={{ padding: '20px', minWidth: '120px' }}>
+        <div style={{
+            fontSize: '4.5rem',
+            fontFamily: 'var(--font-serif)',
+            color: 'var(--primary)',
+            fontWeight: '300',
+            lineHeight: '1',
+            marginBottom: '10px'
+        }}>
+            {value}
+        </div>
+        <div style={{
+            fontSize: '0.8rem',
+            textTransform: 'uppercase',
+            letterSpacing: '3px',
+            color: 'var(--accent)',
+            fontFamily: 'var(--font-sans)',
+            fontWeight: '600'
+        }}>
+            {label}
+        </div>
+    </div>
+);
 
 const Countdown = () => {
     const targetDate = new Date('April 19, 2026 00:00:00').getTime();
@@ -30,30 +54,7 @@ const Countdown = () => {
         return () => clearInterval(timer);
     }, [targetDate]);
 
-    const TimeBlock = ({ value, label }) => (
-        <div style={{ padding: '20px', minWidth: '120px' }}>
-            <div style={{
-                fontSize: '4.5rem',
-                fontFamily: 'var(--font-serif)',
-                color: 'var(--primary)',
-                fontWeight: '300',
-                lineHeight: '1',
-                marginBottom: '10px'
-            }}>
-                {value}
-            </div>
-            <div style={{
-                fontSize: '0.8rem',
-                textTransform: 'uppercase',
-                letterSpacing: '3px',
-                color: 'var(--accent)',
-                fontFamily: 'var(--font-sans)',
-                fontWeight: '600'
-            }}>
-                {label}
-            </div>
-        </div>
-    );
+
 
     return (
         <section className="section reveal">
